@@ -80,7 +80,7 @@ count_first_choice_gender = jl_request_dat %>%
   mutate(freq = n/sum(n))
 count_first_choice_gender
 
-count_first_choice_gender$first_choice = ifelse(count_first_choice_gender$first_choice == 1, "pay", ifelse(count_first_choice_gender$first_choice == 2, "culture", ifelse(count_first_choice_gender$first_choice == 3, "benefits packgender", ifelse(count_first_choice_gender == 4, "retirement", ifelse(count_first_choice_gender$first_choice == 5, "pto", "retirement")))))
+count_first_choice_gender$first_choice = ifelse(count_first_choice_gender$first_choice == 1, "pay", ifelse(count_first_choice_gender$first_choice == 2, "culture", ifelse(count_first_choice_gender$first_choice == 3, "benefits package", ifelse(count_first_choice_gender == 4, "retirement", ifelse(count_first_choice_gender$first_choice == 5, "pto", "retirement")))))
 
 count_first_choice_gender = count_first_choice_gender[order(count_first_choice_gender$gender, -count_first_choice_gender$n),]
 
@@ -99,7 +99,7 @@ count_first_choice_state = jl_request_dat %>%
   mutate(freq = n/sum(n))
 count_first_choice_state
 
-count_first_choice_state$first_choice = ifelse(count_first_choice_state$first_choice == 1, "pay", ifelse(count_first_choice_state$first_choice == 2, "culture", ifelse(count_first_choice_state$first_choice == 3, "benefits packstate", ifelse(count_first_choice_state == 4, "retirement", ifelse(count_first_choice_state$first_choice == 5, "pto", "retirement")))))
+count_first_choice_state$first_choice = ifelse(count_first_choice_state$first_choice == 1, "pay", ifelse(count_first_choice_state$first_choice == 2, "culture", ifelse(count_first_choice_state$first_choice == 3, "benefits package", ifelse(count_first_choice_state == 4, "retirement", ifelse(count_first_choice_state$first_choice == 5, "pto", "retirement")))))
 
 count_first_choice_state = count_first_choice_state[order(count_first_choice_state$state, -count_first_choice_state$n),]
 
