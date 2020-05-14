@@ -110,6 +110,26 @@ count_first_choice_state
 write.csv(count_first_choice_state, "count_first_choice_state.csv", row.names = FALSE)
 
 ```
+Overall
+```{r}
+count_first_choice = jl_request_dat %>%
+  group_by(first_choice) %>%
+  summarise(n = n())%>%
+  mutate(freq = n/sum(n))
+count_first_choice
+
+count_first_choice$first_choice = ifelse(count_first_choice$first_choice == 1, "pay", ifelse(count_first_choice$first_choice == 2, "culture", ifelse(count_first_choice$first_choice == 3, "benefits package", ifelse(count_first_choice == 4, "retirement", ifelse(count_first_choice$first_choice == 5, "pto", "retirement")))))
+
+count_first_choice = count_first_choice[order(-count_first_choice$n),]
+
+count_first_choice$freq = round(count_first_choice$freq,2)*100
+count_first_choice$freq = paste0(count_first_choice$freq, "%")
+names(count_first_choice)[3] = "percent"
+count_first_choice
+write.csv(count_first_choice, "count_first_choice.csv", row.names = FALSE)
+```
+
+
 
 Do a Cramer's V for each demographic across Q_33_1 and see if there are differences
 Get rid of 4 for Q_33_1
